@@ -5,7 +5,9 @@ $Message = $DefaultMessage
 $VolumesNeedCriticalAttention = ""
 $VolumesNeedWarningAttention = ""
 $ListCSV = ""
+
 # --- Disks free space check -----
+
 $Hostname = hostname
 $Wmiq = 'SELECT * FROM Win32_LogicalDisk WHERE Size != Null AND DriveType >= 2'
 $Disks = Get-WmiObject -Query $Wmiq -ErrorAction SilentlyContinue -ErrorVariable ProcessError;
@@ -30,6 +32,7 @@ if ($ProcessError) {
 		}
 	}
 }
+
 # ----- Cluster shared volume free space check ----
 
 Import-Module FailoverClusters

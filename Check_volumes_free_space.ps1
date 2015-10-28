@@ -1,3 +1,11 @@
+# Plugin for Nagios
+# Check on Windows host if there on local disks 
+# or Cluster Shared Volumes (CSV) attached to host is enought free space
+# if there are one or more discs or CSV with less than 10% free space 
+# Warning message Generated
+# if there are one or more discs or CSV with less than 5% free space 
+# Critical message Generated
+
 param([int]$w=10, [int]$c=5)
 $Status = 0
 $DefaultMessage = "Ok, Free space on all volumes more than 10%"

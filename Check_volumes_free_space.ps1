@@ -5,6 +5,7 @@
 # Warning message Generated
 # if there are one or more discs or CSV with less than 5% free space 
 # Critical message Generated
+# usefree v 0.0.1
 
 param([int]$w=10, [int]$c=5)
 $Status = 0

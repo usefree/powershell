@@ -36,7 +36,7 @@ $ArrayOfAppServers = @("app1","app2","app3")
 $ArrayOfHostsServers = @("host1", "host2", "host3")
 $ArrayOfRdpServers = @("rdp11", "rdp2")
 $ArrayOfDBServers = @("db1","db2")
-$ArrayOfOtherServers2 =@("appd", "appc", "BL-BO-MGMT")
+$ArrayOfOtherServers2 =@("appd", "appc")
 $ArrayOfAllServers2 = $ArrayOfDBServers + $ArrayOfOtherServers2 + $ArrayOfRdpServers + `
                       $ArrayOfAppServers + $ArrayOfHostsServers
 $ArrayOfTestServers = @("appf","app4","host4","db3","rdp3")
@@ -134,6 +134,9 @@ $ScriptResult = @()
 
 $User = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 $Credentials = Get-Credential $User
+#!!
+# necessary to add checking if credentials are correct after first server connection
+#!!
 	
 	foreach ($Server in $ArrayOfServers) {
 	write-host "Processing $Server ..."

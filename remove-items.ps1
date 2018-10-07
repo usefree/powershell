@@ -7,12 +7,24 @@ $items = Get-Childitem "$workdir" -Recurse
 $stoppedProcesses = ""
 foreach ($item in $items) {
     Write-Host "remove $item with force"
-    $item | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue -ErrorVariable ProcessError
-    if ($processerror) {
+    if ( ($item.GetType()).name -eq "DirectoryInfo" ) {
+        write-host "removing directory $item"
+        $item | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue -ErrorVariable ProcessError1
+    } else {
+        write-host "removing file $item"
+        $item | Remove-Item -Force -ErrorAction SilentlyContinue -ErrorVariable ProcessError2
+    }
+    if (($ProcessError1) -or ($ProcessError2)) {
         Write-Host "remove $item with force failed"
-        $item | Remove-Item -Recurse -ErrorAction SilentlyContinue -errorvariable ProcessError1
         Write-Host "remove $item without force"
-        if ($processerror1) {
+        if (($item.GetType()).name -eq "DirectoryInfo" ) {
+            write-host "removing directory $item"
+            $item | Remove-Item -Recurse -ErrorAction SilentlyContinue -errorvariable ProcessError3
+        } else {
+            write-host "removing file $item"
+            $item | Remove-Item -ErrorAction SilentlyContinue -errorvariable ProcessError4
+        }
+        if (($ProcessError3) -or ($ProcessError4)) {
             Write-Host "remove $item without force failed"
             if ( ($item.GetType()).name -eq "FileInfo" ) {
                 Write-Host "searching blocking process"
@@ -24,7 +36,7 @@ foreach ($item in $items) {
                 }
             } 
         }
-    } 
+    }    
 }
 return $stoppedProcesses
 }

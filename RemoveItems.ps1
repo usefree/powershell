@@ -1,4 +1,5 @@
 # remove files script
+# recursively rename and remove
 param( 
 [string]$DirToRemove 
 )

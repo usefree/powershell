@@ -6,6 +6,7 @@ $SysUpTime = (Get-Date) - $LastBootTime
 
 $Uptime = "UPTIME: $($sysuptime.days) Days, $($sysuptime.hours) Hours, $($sysuptime.minutes) Minutes, $($sysuptime.seconds) Seconds"
 
+write-host "System active for:"
 write-host $Uptime 
 
 start-sleep 5

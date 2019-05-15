@@ -399,10 +399,14 @@ Invoke-Expression $Printresult
 # 44 $Output = " ft PSComputerName, ifAlias, InterfaceDescription"
 
 # 45 $Commands[0] = 'Invoke-GPUpdate -force'
-# 45 $Commands[0] = 'gpupdate /force'
+# 45 $Commands[1] = 'gpupdate /force'
 
 # 46 get cpu frequency
 # 46 $Commands[0] = '(get-wmiobject Win32_Processor | select-object -first 1).MaxClockSpeed'
+
+# 47 find name by sid draft
+# $Commands[0] = '$objSID = New-Object System.Security.Principal.SecurityIdentifier ("S-1-5-21-3979673632-2343654964-3717600413-7770")'
+# $Commands[1] = '$objUser = $objSID.Translate( [System.Security.Principal.NTAccount]); $objUser.Value'
 
 
 

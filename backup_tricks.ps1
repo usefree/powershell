@@ -64,8 +64,8 @@ Switch ($BackupSatus)
 Remove-Item $TempFolder -Force -recurse	
 # Send email here 	
 if ("2,3" -match $Message){
-	send-mailmessage -to "User01 <pm.services@gmail.com>"`
-	-from "BackUp script <pm1.services@gmail.com>" -subject $Message -smtpServer 192.168.49.110
+	send-mailmessage -to "User01 <pmservicess@gmail.com>"`
+	-from "BackUp script <pm1servicess@gmail.com>" -subject $Message -smtpServer 192.168.46.110
 }
 If ($BackupSatus -eq 3){
 	$BackupSatus = 2
